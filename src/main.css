@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Source Sans Pro', 'Trebuchet MS', 'Lucida Grande', 'Bitstream Vera Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  text-align: center;
+  color: #293c4b;
+}
+
+a {
+  color: deepskyblue;
+}
+
+header {
+  background-color: #234;
+  color: white;
+}
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
+header h1 {
+  font-size: 100px;
+}
+
+header h4 {
+  padding: 0.5em 0 1em 0;
+}
+header img {
+  padding: 2em;
+  margin: auto;
+  height: 40vh;
+}
+
+.info {
+  padding: 1em 20em;
+}
+@media only screen and (max-width: 800px)  {
+  .info {
+    padding: 1em 4em;
+  }
+}
+.wut {
+  text-align: left;
+  background-color: #229922;
+  color: white;
+}
+
+.when {
+  text-align: right;
+  background-color: #3b6398;
+  color: white;
+}
+
+.where {
+  text-align: left;
+  background-color: darkorchid;
+  color: white;
+}
