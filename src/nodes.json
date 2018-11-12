@@ -1,0 +1,124 @@
+[
+  {
+    "key": "READY",
+    "text": "ready to ride?",
+    "options": [
+      { "text": "i'm in!", "to": "JOIN_BIKE_CLUB" },
+      { "text": "no. i'm not interested.", "to": "HATE_BIKES" }
+    ]
+  },
+  {
+    "key": "HATE_BIKES",
+    "text": "what--do you hate bikes?",
+    "options": [
+      { "text": "ya.  i hate 'em real bad", "to": "YOU_DONT_HATE_BIKES" },
+      { "text": "no.", "to": "WAS_IT_SOMETHING_I_SAID" }
+    ]
+  },
+  {
+    "key": "YOU_DONT_HATE_BIKES",
+    "text": "you don't actually hate bikes.",
+    "options": [
+      { "text": "no i hate 'em alright.", "to": "TRUST_ME_YOU_DONT_HATE_BIKES" }
+    ]
+  },
+  {
+    "key": "TRUST_ME_YOU_DONT_HATE_BIKES",
+    "text": "trust me.  you don't hate 'em. i'll show you.",
+    "options": [
+      { "text": "no, you won't show me.", "to": "WAS_IT_SOMETHING_I_SAID" },
+      { "text": "you think you can convince me?", "to": "TALK_TO_ME" }
+    ]
+  },
+  {
+    "key": "WAS_IT_SOMETHING_I_SAID",
+    "text": "was it something i said?",
+    "options": [
+      { "text": "ya.", "to": "BUMMER_SUPPORT" },
+      { "text": "na.", "to": "NO_REASON_NOT_TO" }
+    ]
+  },
+  {
+    "key": "BUMMER_SUPPORT",
+    "text": "bummer. i want to support you. i think you're really great.",
+    "options": [
+      { "text": "i'm not convinced.", "to": "FIT_ENOUGH" },
+      { "text": "well in that case...", "to": "JOIN_BIKE_CLUB" }
+    ]
+  },
+  {
+    "key": "NO_REASON_NOT_TO",
+    "text": "obviously i'm pretty nice.  so you have no reason not to bike?",
+    "options": [
+      { "text": "i guess i shoud ride then!", "to": "JOIN_BIKE_CLUB" },
+      { "text": "i'm just not sure yet.", "to": "FIT_ENOUGH" }
+    ]
+  },
+  {
+    "key": "FIT_ENOUGH",
+    "text": "you're fit enough.  you're good looking enough.  you're capable enough, i promise!",
+    "options": [
+      { "text": "still, could be hard.", "to": "ITS_A_BIG_HILL" },
+      { "text": "you don't know me! you don't know anything!", "to": "I_KNOW_UR_READY" }
+    ]
+  },
+  {
+    "key": "I_KNOW_UR_READY",
+    "text": "ohhhh i know you alright. you're ready?",
+    "options": [
+      { "text": "seriously, looks hard.", "to": "ITS_A_BIG_HILL" },
+      { "text": "well i am interested in fun and fitness.", "to": "PEP_TALK" }
+    ]
+  },
+  {
+    "key": "ITS_A_BIG_HILL",
+    "text": "it's a big hill. fitness is by definition challenging.  i'll make it fun!",
+    "options": [
+      { "text": "alright.  but i have questions.", "to": "TALK_TO_ME" },
+      { "text": "still not sure.", "to": "PEP_TALK" }
+    ]
+  },
+  {
+    "key": "PEP_TALK",
+    "text": "do you need any hot tips or pep talk?",
+    "options": [
+      { "text": "nah, dawg.", "to": "TALK_TO_ME" },
+      { "text": "maybe?", "to": "WE_CAN" }
+    ]
+  },
+  {
+    "key": "WE_CAN",
+    "text": "we can go slow.  we can go fast.  we can figure it out.",
+    "options": [
+      { "text": "rad.", "to": "JOIN_BIKE_CLUB" },
+      { "text": "i just don't know if biking uphill is for me", "to": "ITS_A_BIG_HILL" }
+    ]
+  },
+  {
+    "key": "TALK_TO_ME",
+    "text": "just come talk to me!",
+    "options": [
+      { "text": "i'm convinced.", "to": "JOIN_BIKE_CLUB" },
+      { "text": "you're a little weird", "to": "OBVIOUSLY" }
+    ]
+  },
+  {
+    "key": "OBVIOUSLY",
+    "text": "ya, obviously.",
+    "options": [
+      { "text": "soooooo...", "to": "TALK_TO_ME" }
+    ]
+  },
+  {
+    "key": "JOIN_BIKE_CLUB",
+    "text": "nice! let's ride!",
+    "options": [
+      { "text": "what's next?", "to": "GET_IN_TOUCH" }
+    ]
+  },
+  {
+    "key": "GET_IN_TOUCH",
+    "text": "ping me on slack.",
+    "options": []
+  }
+]

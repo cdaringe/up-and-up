@@ -1,8 +1,10 @@
 module Main exposing (Model, Msg(..), init, main, update, view)
 
+import Array exposing (Array)
 import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Node exposing (..)
 
 
 
@@ -10,12 +12,21 @@ import Html.Attributes exposing (..)
 
 
 type alias Model =
-    {}
+    { nodes : Array Node
+    }
 
 
-init : ( Model, Cmd Msg )
-init =
-    ( {}, Cmd.none )
+type alias Flags =
+    { nodes : Array Node
+    }
+
+
+init : Flags -> ( Model, Cmd Msg )
+init flags =
+    ( { nodes = flags.nodes
+      }
+    , Cmd.none
+    )
 
 
 
@@ -59,11 +70,11 @@ view model =
 ---- PROGRAM ----
 
 
-main : Program () Model Msg
+main : Program Flags Model Msg
 main =
     Browser.element
         { view = view
-        , init = \_ -> init
+        , init = \flags -> init flags
         , update = update
         , subscriptions = always Sub.none
         }

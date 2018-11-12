@@ -1,3 +1,9 @@
 import './main.css'
 import { Elm } from './Main.elm'
-Elm.Main.init({ node: document.getElementById('root') })
+import nodes from './nodes.json'
+Elm.Main.init({
+  node: document.getElementById('root'),
+  flags: {
+    nodes
+  }
+})
