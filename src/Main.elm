@@ -4,6 +4,7 @@ import Array exposing (Array)
 import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (onClick)
 import Node exposing (..)
 
 
@@ -46,24 +47,62 @@ update msg model =
 ---- VIEW ----
 
 
+render_intro =
+    [ header []
+        [ img [ src "/bike.gif" ] []
+        , h1 [] [ text "Up n' Up™" ]
+        , h4 [] [ text "let's go biking!" ]
+        ]
+    , div [ class "wut info" ]
+        [ h1 [] [ text "what is it." ]
+        , p [] [ text "you. me. us.  biking!" ]
+        , p [] [ text "let's ride bikes at lunch." ]
+        ]
+    , div [ class "when info" ]
+        [ h1 [] [ text "when is it." ]
+        , p [] [ text "wednesdays! noon. fair weather only." ]
+        ]
+    ]
+
+
+render_node node =
+    let
+        { options, text } =
+            node
+    in
+    div [ class "node__container" ]
+        [ div
+            [ class "node__content" ]
+            (List.concat
+                [ [ h1 [] [ Html.text text ] ]
+                , List.map
+                    (\link ->
+                        div []
+                            [ button [ onClick NoOp ] [ Html.text link.text ]
+                            ]
+                    )
+                    options
+                ]
+            )
+        ]
+
+
+render_nodes nodes =
+    let
+        fragments =
+            Array.map render_node nodes
+    in
+    Array.toList fragments
+
+
 view : Model -> Html.Html Msg
 view model =
     div []
-        [ header []
-            [ img [ src "/bike.gif" ] []
-            , h1 [] [ text "Up n' Up™" ]
-            , h4 [] [ text "let's go biking!" ]
+        (List.concat
+            [ render_intro
+            , render_nodes model.nodes
             ]
-        , div [ class "wut info" ]
-            [ h1 [] [ text "what is it." ]
-            , p [] [ text "you. me. us.  biking!" ]
-            , p [] [ text "let's ride bikes at lunch." ]
-            ]
-        , div [ class "when info" ]
-            [ h1 [] [ text "when is it." ]
-            , p [] [ text "wednesdays! noon. fair weather only." ]
-            ]
-        ]
+        )
 
 
 
