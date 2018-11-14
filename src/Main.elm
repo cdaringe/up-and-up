@@ -2,11 +2,13 @@ module Main exposing (Model, Msg(..), init, main, update, view)
 
 import Array exposing (Array)
 import Browser
+import Browser.Dom as Dom
 import Html exposing (button, div, h1, h4, header, img, p, text)
-import Html.Attributes exposing (class, src, style)
+import Html.Attributes exposing (class, id, src, style)
 import Html.Events exposing (onClick)
 import List exposing (..)
 import Node exposing (..)
+import Task
 
 
 
@@ -37,11 +39,24 @@ init flags =
 
 type Msg
     = NoOp
+    | ScrollToPane String
+
+
+scrollToPane id =
+    Dom.getElement id
+        |> Task.andThen (\el -> Dom.setViewport el.element.x el.element.y)
+        |> Task.onError (\_ -> Task.succeed ())
+        |> Task.perform (\_ -> NoOp)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    ( model, Cmd.none )
+    case msg of
+        NoOp ->
+            ( model, Cmd.none )
+
+        ScrollToPane id ->
+            ( model, scrollToPane id )
 
 
 
@@ -68,10 +83,10 @@ render_intro =
 
 render_node node =
     let
-        { options, text } =
+        { key, options, text } =
             node
     in
-    div [ class "node__container" ]
+    div [ id key, class "node__container" ]
         [ div
             [ class "node__content" ]
           <|
@@ -80,7 +95,7 @@ render_node node =
                 , map
                     (\link ->
                         div []
-                            [ button [ onClick NoOp ] [ Html.text link.text ]
+                            [ button [ onClick <| ScrollToPane link.to ] [ Html.text link.text ]
                             ]
                     )
                     options
