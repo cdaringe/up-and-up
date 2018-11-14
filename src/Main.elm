@@ -2,9 +2,10 @@ module Main exposing (Model, Msg(..), init, main, update, view)
 
 import Array exposing (Array)
 import Browser
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Html exposing (button, div, h1, h4, header, img, p, text)
+import Html.Attributes exposing (class, src, style)
 import Html.Events exposing (onClick)
+import List exposing (..)
 import Node exposing (..)
 
 
@@ -73,9 +74,10 @@ render_node node =
     div [ class "node__container" ]
         [ div
             [ class "node__content" ]
-            (List.concat
+          <|
+            concat
                 [ [ h1 [] [ Html.text text ] ]
-                , List.map
+                , map
                     (\link ->
                         div []
                             [ button [ onClick NoOp ] [ Html.text link.text ]
@@ -83,7 +85,6 @@ render_node node =
                     )
                     options
                 ]
-            )
         ]
 
 
@@ -97,12 +98,11 @@ render_nodes nodes =
 
 view : Model -> Html.Html Msg
 view model =
-    div []
-        (List.concat
+    div [] <|
+        concat
             [ render_intro
             , render_nodes model.nodes
             ]
-        )
 
 
 
